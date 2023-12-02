@@ -30,8 +30,8 @@ class FirebaseManager{
     return getTaskCollection().doc(taskId).delete();
   }
 
-  static void updateTask(TaskModel task){
-    getTaskCollection().doc(task.id).update(task.tojson());
+  static Future<void> updateTask(TaskModel task){
+    return getTaskCollection().doc(task.id).update(task.tojson());
   }
 
 

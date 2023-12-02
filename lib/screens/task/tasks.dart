@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app/models/task_models.dart';
+import 'package:todo_app/providers/theme_provider.dart';
 import 'package:todo_app/screens/task/task_item.dart';
 import 'package:todo_app/shared/networks/firebase/firebase_manager.dart';
 
@@ -17,6 +19,7 @@ class _TasksState extends State<Tasks> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    var provider=Provider.of<ThemeProvider>(context);
     return Column(children: [
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 7),
@@ -31,8 +34,8 @@ class _TasksState extends State<Tasks> {
             });
           },
           leftMargin: 20,
-          monthColor: Colors.black,
-          dayColor: Colors.black,
+          monthColor:provider.theme==ThemeMode.light?Colors.black:Colors.white,
+          dayColor: provider.theme==ThemeMode.light?Colors.black:Colors.white,
           activeDayColor: Colors.white,
           activeBackgroundDayColor: theme.primaryColor,
           dotsColor: Colors.white,

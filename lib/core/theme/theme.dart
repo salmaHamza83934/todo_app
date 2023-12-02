@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ApplicationTheme {
-  static const primaryColor = Color(0xFF5D9CEC);
+  static const primaryColorLight = Color(0xFF5D9CEC);
+  static const primaryColorDark=Color(0xFF060E1E);
   static const mintGreen= Color(0xFFDFECDB);
   static ThemeData lightTheme = ThemeData(
-    primaryColor: primaryColor,
+    primaryColor: primaryColorLight,
     colorScheme: const ColorScheme(
         brightness: Brightness.light,
-        primary: primaryColor,
-        onPrimary: Colors.white,
-        secondary: primaryColor,
+        primary: primaryColorLight,
+        onPrimary: Colors.black,
+        secondary: primaryColorLight,
         onSecondary: Colors.white,
         error: Colors.red,
         onError: Colors.redAccent,
@@ -26,10 +27,10 @@ class ApplicationTheme {
       backgroundColor: Colors.transparent,
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(
-        color: primaryColor,
+        color: primaryColorLight,
         size: 35,
       ),
-      selectedItemColor: primaryColor,
+      selectedItemColor: primaryColorLight,
       unselectedItemColor: Colors.grey,
       unselectedIconTheme: IconThemeData(color: Colors.grey, size: 30),
     ),
@@ -41,7 +42,7 @@ class ApplicationTheme {
       ),
       bodyLarge: GoogleFonts.poppins(
         fontSize: 20,
-        color: primaryColor,
+        color: primaryColorLight,
         fontWeight: FontWeight.w400,
       ),
       bodyMedium: GoogleFonts.poppins(
@@ -52,12 +53,70 @@ class ApplicationTheme {
       bodySmall: GoogleFonts.poppins(
         fontSize: 14,
         color: Colors.black,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w700,
       ),
     ),
     appBarTheme: AppBarTheme(
       iconTheme: IconThemeData(
         color: Colors.white,
+      ),
+      elevation: 0,
+    ),
+  );
+  static ThemeData darkTheme = ThemeData(
+    primaryColor: primaryColorLight,
+    colorScheme: const ColorScheme(
+        brightness: Brightness.light,
+        primary: primaryColorDark,
+        onPrimary: Colors.white,
+        secondary: primaryColorLight,
+        onSecondary: Colors.white,
+        error: Colors.red,
+        onError: Colors.redAccent,
+        background: primaryColorDark,
+        onBackground: Colors.white70,
+        surface: Colors.white38,
+        onSurface: Colors.white60),
+    scaffoldBackgroundColor: primaryColorDark,
+    iconTheme: IconThemeData(
+        color: Colors.white
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.transparent,
+      type: BottomNavigationBarType.fixed,
+      selectedIconTheme: IconThemeData(
+        color: primaryColorLight,
+        size: 35,
+      ),
+      selectedItemColor: primaryColorLight,
+      unselectedItemColor: Colors.grey,
+      unselectedIconTheme: IconThemeData(color: Colors.grey, size: 30),
+    ),
+    textTheme: TextTheme(
+      titleLarge: GoogleFonts.poppins(
+        fontSize: 22,
+        color: Colors.black,
+        fontWeight: FontWeight.w700,
+      ),
+      bodyLarge: GoogleFonts.poppins(
+        fontSize: 20,
+        color: primaryColorLight,
+        fontWeight: FontWeight.w400,
+      ),
+      bodyMedium: GoogleFonts.poppins(
+        fontSize: 18,
+        color: Colors.white,
+        fontWeight: FontWeight.w400,
+      ),
+      bodySmall: GoogleFonts.poppins(
+        fontSize: 14,
+        color: Colors.white,
+        fontWeight: FontWeight.w700,
+      ),
+    ),
+    appBarTheme: AppBarTheme(
+      iconTheme: IconThemeData(
+        color: Colors.black,
       ),
       elevation: 0,
     ),

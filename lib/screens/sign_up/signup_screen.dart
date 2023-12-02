@@ -19,15 +19,6 @@ class RegisterScreen extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       body: Stack(children: [
-        Image.asset(
-          'assets/images/background.png',
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(50),
-          child: Align(child: Text('Sign up',style: theme.textTheme.titleLarge!.copyWith(fontSize: 25),),alignment: Alignment.topCenter,),
-        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: SingleChildScrollView(
@@ -114,6 +105,21 @@ class RegisterScreen extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+        ),
+        Image.asset(
+          'assets/images/background2.png',
+          fit: BoxFit.cover,
+          width: mediaQuery.width,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(50),
+          child: Align(
+            child: Text(
+              'Sign in',
+              style: theme.textTheme.titleLarge!.copyWith(fontSize: 25),
+            ),
+            alignment: Alignment.topCenter,
           ),
         ),
       ]),

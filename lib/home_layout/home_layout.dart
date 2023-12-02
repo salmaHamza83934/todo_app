@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/providers/theme_provider.dart';
 import 'package:todo_app/screens/log_in/login_screen.dart';
-import 'package:todo_app/screens/settings.dart';
+import 'package:todo_app/screens/settings/settings.dart';
 import 'package:todo_app/shared/networks/firebase/firebase_manager.dart';
 import '../screens/task/add_task.dart';
 import '../screens/task/tasks.dart';
@@ -15,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
-  List<Widget> tabs = [Tasks(), Settings()];
+  List<Widget> tabs = [Tasks(), SettingsView()];
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         .of(context)
         .size;
     var theme = Theme.of(context);
+    var provider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
@@ -31,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             FirebaseAuth.instance.signOut();
             Navigator.pushNamedAndRemoveUntil(
                 context, LoginScreen.routeName, (route) => false);
-          }, icon: Icon(Icons.arrow_back))
+          }, icon: Icon(Icons.logout))
         ],
         backgroundColor: theme.primaryColor,
         toolbarHeight: mediaQuery.height * 0.1,
@@ -48,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
+        color: provider.theme==ThemeMode.light?Colors.white:Color(0xFF141922),
         notchMargin: 8,
         shape: CircularNotchedRectangle(),
         child: BottomNavigationBar(
